@@ -50,10 +50,16 @@ const Img = styled.img`
   width: 100%;
   object-fit: cover;
 `;
-const Title = styled.p`
+const Title = styled.span`
   font-size: 18px;
   color: #222;
   font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* 2줄 이상일땐 숫자를 변경 */
+  -webkit-box-orient: vertical;
+  word-break: break-all;
 `;
 const Price = styled.p`
   color: #e91e63;
