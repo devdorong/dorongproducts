@@ -5,21 +5,22 @@ import styled from "@emotion/styled";
 const Wrap = styled.div`
   padding-top: 50px;
   margin: 0 auto;
+  padding-bottom: 50px;
+  max-width: 1300px;
 `;
 const Ul = styled.ul`
+  flex-wrap: wrap;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
   gap: 20px;
 `;
 const Li = styled.li`
-  width: 720px;
-  height: 170px;
+  width: 300px;
   border: 1px solid #eaeaea;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   border-radius: 12px;
   box-shadow: 0 2px 8px #00000014;
   transform: 0.2;
@@ -33,25 +34,21 @@ const Li = styled.li`
   }
 `;
 const ImgWrap = styled.div`
-  width: 74px;
-  height: 74px;
+  position: relative;
+  width: 150px;
+  height: 150px;
   border: 1px solid #ddd;
   background-color: #f8f8f8;
   border-radius: 10px;
   margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+
   /* overflow: hidden; */
 `;
 const Img = styled.img`
   width: 100%;
   object-fit: cover;
-`;
-const TextWrap = styled.div`
-  width: 552px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-right: 10px;
 `;
 const Title = styled.p`
   font-size: 18px;
@@ -63,7 +60,20 @@ const Price = styled.p`
 `;
 const Desc = styled.p`
   color: #555;
-  text-align: center;
+  /* text-align: center; */
+`;
+const PriceWrap = styled.div`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+  padding: 10px;
+`;
+const Id = styled.span`
+  font-weight: 700;
 `;
 
 function Product() {
@@ -88,16 +98,19 @@ function Product() {
       <Ul>
         {products.map(item => (
           <Li key={item.id}>
+            <Title>{item.title}</Title>
             <ImgWrap>
               <Img src={item.thumbnail} alt="#" />
+              <PriceWrap>
+                <Id>ID : {item.id}</Id>
+                <Price>${item.price}</Price>
+              </PriceWrap>
             </ImgWrap>
-            <TextWrap>
-              <Title>{item.title}</Title>
-              <Price>${item.price}</Price>
-              <Desc>{item.description}</Desc>
-            </TextWrap>
+            <Desc>{item.description}</Desc>
           </Li>
         ))}
+        <Li></Li>
+        <Li></Li>
       </Ul>
     </Wrap>
   );
